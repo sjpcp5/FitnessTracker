@@ -13,4 +13,4 @@ A consumer will reach their fitness goals quicker when they track their workout 
 
 ## Demo
 
-[]()
+[Link to deployed app](https://peaceful-brushlands-14092.herokuapp.com/)
