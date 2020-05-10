@@ -16,20 +16,20 @@ app.use(routes)
 
 mongoose.Promise = global.Promise
 // Connect to the Mongo DB
-// mongoose.connect(
-//   process.env.MONGODB_URI ||
-//     'mongodb://<dbuser>:<dbpassword>@ds161134.mlab.com:61134/heroku_89g3tc9h',
-//   {
-//     useNewUrlParser: true,
-//     useFindAndModify: false,
-//     useUnifiedTopology: true
-//   }
-// )
+mongoose.connect(
+  process.env.MONGODB_URI ||
+    'mongodb://<dbuser>:<dbpassword>@ds161134.mlab.com:61134/heroku_89g3tc9h',
+  {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+  }
+)
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', {
-  useNewUrlParser: true
-})
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', {
+//   useNewUrlParser: true
+// })
 
 // Start the API server
 app.listen(PORT, function () {
