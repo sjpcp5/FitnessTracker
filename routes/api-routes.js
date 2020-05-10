@@ -31,7 +31,9 @@ module.exports = function (app) {
           console.log(allExercises)
           updateWorkout(allExercises)
         })
-        .catch(err => res.status(422).json(err))
+        .catch(err => {
+          res.status(422).json(err)
+        })
       function updateWorkout (exercises) {
         db.Workout.findByIdAndUpdate(
           workoutId,
