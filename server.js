@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 // Serve up static assets (usually on heroku)
 app.use(express.static('public'))
-const db = require('./models')
+
 // Add routes, both API and view
 app.use(routes)
 
@@ -18,7 +18,9 @@ mongoose.Promise = global.Promise
 // Connect to the Mongo DB
 mongoose.connect(
   process.env.MONGODB_URI ||
+
     'mongodb://<dbuser>:<dbpassword>@ds161134.mlab.com:61134/heroku_89g3tc9h',
+
   {
     useNewUrlParser: true,
     useFindAndModify: false,
@@ -30,6 +32,7 @@ mongoose.connect(
 // mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', {
 //   useNewUrlParser: true
 // })
+
 
 // Start the API server
 app.listen(PORT, function () {
