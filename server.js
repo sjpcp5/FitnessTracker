@@ -15,11 +15,14 @@ app.use(express.static('public'))
 // Add routes, both API and view
 app.use(routes)
 
+mongoose.Promise = global.Promise
 // Connect to the Mongo DB
 mongoose.connect(
   process.env.MONGODB_URI || 'mongodb://localhost:27017/workout',
   {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
   }
 )
 

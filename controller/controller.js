@@ -3,37 +3,29 @@ const db = require('../models')
 // Defining methods for the postsController
 module.exports = {
   findAll: function (req, res) {
-    db.Workout.find(req.query)
-      .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err))
-  },
-  findById: function (req, res) {
-    db.Workout.findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err))
-  },
-  create: function (req, res) {
-    db.Workout.create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err))
-  },
-  update: function (req, res) {
-    db.Workout.findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err))
-  },
-  remove: function (req, res) {
-    db.Workout.findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
+    db.Workout.find()
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err))
   },
   range: function (req, res) {
-    db.Workout.findRange({})
+    db.Workout.find()
       .then(dbModel => {
         res.json(dbModel)
       })
+      .catch(err => res.status(422).json(err))
+  },
+  create: function (req, res) {
+    db.Workout.create({})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err))
+  },
+  update: function (req, res) {
+    db.Workout.findByIdAndUpdate(
+      { _id: req.params.id },
+      { $push: { exercises: req.body } },
+      { new: true, runValidators: true }
+    )
+      .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err))
   }
 }

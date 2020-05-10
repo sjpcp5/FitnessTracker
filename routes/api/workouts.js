@@ -10,9 +10,8 @@ router
 // Matches with "/api/workouts/:id"
 router
   .route('/:id')
-  .get(workoutsController.findById)
+
   .put(workoutsController.update)
-  .delete(workoutsController.remove)
 
 // matches with '/API/workouts/range
 router.route('/range').get(workoutsController.range)
