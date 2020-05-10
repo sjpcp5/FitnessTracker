@@ -18,7 +18,8 @@ app.use(routes)
 mongoose.Promise = global.Promise
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost:27017/workout',
+  process.env.MONGODB_URI ||
+    'mongodb://mongodb://<dbuser>:<dbpassword>@ds161134.mlab.com:61134/heroku_89g3tc9h',
   {
     useNewUrlParser: true,
     useFindAndModify: false,
